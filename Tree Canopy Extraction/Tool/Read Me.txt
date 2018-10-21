@@ -1,0 +1,28 @@
+Tree Canopy Extraction Using LIDAR and NDVI for 3D Map Tree Masking
+
+Purpose:
+This tool uses highest hit and bare earth LIDAR rasters, and NIR imagery (e.g. 4-band NAIP) to extract tree canopy information. The final product is a single value raster highlighting areas containing tree cover. The resulting raster does not contain tree or canopy height information. To gain heights extract values from the non-ground raster. The purpose of this tool is to derive a tree canopy mask for 3D cartography, and is not for scientific analysis.
+
+Usage:
+--When using this tool in ArcMap you must have Spatial Analyst installed and enabled.
+--The Canopy Extraction tool creates a single value raster for areas containing tree cover.
+--The final canopy raster is best displayed using unique value symbology.
+--Must have Spatial Analyst installed and enabled.
+--The tool creates a non-ground raster by subtracting bare earth values from highest-hit values, resulting in height values of above ground features. These features are then classified by height, excluding shrub and lower features. An NDVI raster is created and used to mask or isolate above ground features that are classified as vegetation. The NDVI and non-ground (above ground) rasters are then combined to create a depiction of tree canopy.
+--For best results, use 1 meter LIDAR rasters and 1 meter 4-band NAIP imagery produced around the same time period. In essence, be sure to use input rasters with the same temporal and spatial resolution. Also, make sure that the input rasters are in the same projected coordinate system, and are clipped to the same geographic extent. Lastly, check the imagery for areas of trees senescing, as this can affect the end result.
+
+Input Requirements:
+--Highest Hit raster derived from LIDAR.
+--Bare Earth raster derived from LIDAR.
+--NAIP or other 1m imagery with visual red and NIR bands.
+
+Output:
+--Single value raster showing areas containing tree canopy.
+
+Debugging:
+You can debug the script in an IDE.Debugging only works with Python 2.7, ArcGIS 10x Desktop, and Spatial Analyst installed. 
+
+Author & Rights of Use:
+This tool was created by Aaron Taveras. Contact: aaron.taveras@humboldt.edu
+This tool was built using Python 2.7 for ArcMap 10+
+Please modify this script for your own purposes - it is open source. 
